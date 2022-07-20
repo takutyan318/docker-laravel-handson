@@ -1,8 +1,5 @@
-<head>
-    <title>Laravel Sample</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-
+@extends('layout')
+@section('content')
 <div class="container ops-main">
     <div class="row">
         <div class="col-md-12">
@@ -42,3 +39,4 @@
         </div>
     </div>
 </div>
+@endsection
