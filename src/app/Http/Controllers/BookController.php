@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Book;
 
 class BookController extends Controller
 {
@@ -13,7 +14,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        //DBよりBooksテーブルのレコードを全て取得
+        $books = Book::all();
+
+        return view('book/index', compact('books'));
     }
 
     /**
@@ -56,7 +60,10 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        //DBよりURIパラメータと同じIDをもつBookの情報を取得
+        $book = Book::findOrFail($id);
+
+        return view('book/edit', compact('book'));
     }
 
     /**
