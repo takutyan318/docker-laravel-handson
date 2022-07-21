@@ -1,0 +1,37 @@
+<div class="container ops-main">
+    <div class="row">
+        <div class="col-md-6">
+            @if ($target == 'store')
+            <h2>書籍新規登録</h2>
+            @elseif ($target == 'update')
+            <h2>書籍更新</h2>
+            @endif
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+            @if ($target == 'store')
+            <form action="/book" method="POST">
+            @elseif ($target == 'update')
+            <form action="/book/{{ $book->id }}" method="POST">
+                <input type="hidden" name="_method" value="PUT">
+            @endif
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="form-group">
+                    <label for="name">書籍名</label>
+                    <input type="text" class="form-control" name="name" value="{{ $book->name }}">
+                </div>
+                <div class="form-group">
+                    <label for="price">価格</label>
+                    <input type="text" class="form-control" name="price" value="{{ $book->price }}">
+                </div>
+                <div class="form-group">
+                    <label for="author">著者</label>
+                    <input type="text" class="form-control" name="author" value="{{ $book->author }}">
+                </div>
+                <button type="submit" class="btn btn-default">登録</button>
+                <a href="/book">戻る</a>
+            </form>
+        </div>
+    </div>
+</div>
