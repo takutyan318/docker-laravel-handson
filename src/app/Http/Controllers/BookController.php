@@ -75,7 +75,13 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->name = $request->name;
+        $book->price = $request->price;
+        $book->author = $request->author;
+        $book->save();
+
+        return redirect('/book');
     }
 
     /**
@@ -86,6 +92,9 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect('/book');
     }
 }
